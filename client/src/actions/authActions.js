@@ -15,18 +15,22 @@ export const registerUser = (userData, history) => dispatch => {
     );
 };
 
-//dont work
-// export const getUser = userData => dispatch => {
-//   axios
-//     .get("/api/users/:id", userData)
-//     .then(res => console.log(res)) // re-direct to login on successful register
-//     .catch(err =>
-//       dispatch({
-//         type: GET_ERRORS,
-//         payload: err.response.data
-//       })
-//     );
-// };
+export const getUsers = user => dispatch => {
+  axios
+    .get("/api/users/getdata", {
+      responseType: "json"
+    })
+    .then(res => {
+      console.log(res);
+      return res.data;
+    });
+  // .catch(err => {
+  //   dispatch({
+  //     type: GET_ERRORS,
+  //     payload: err.response.data
+  //   });
+  // });
+};
 
 // Login - get user token
 export const loginUser = userData => dispatch => {

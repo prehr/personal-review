@@ -4,69 +4,124 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { BrowserRouter as Route } from "react-router-dom";
 import { logoutUser } from "../../actions/authActions";
+import { getUsers } from "../../actions/authActions";
 import Login from "../../components/auth/Login";
+import axios from "axios";
+
 //import StudentHome from "../../components/Student/StudentHome";
 //import ReviewerHome from "../../components/Reviewer/ReviewerHome";
 
 class Dashboard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      requests: [
+        {
+          _id: "",
+          name: "",
+          email: "",
+          password: "",
+          reviewer: ""
+        }
+      ]
+    };
+    this.renderTableBody = this.renderTableBody.bind(this);
+    this.getData = this.getData.bind(this);
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData() {
+    axios
+      .get("/api/users/getdata", {
+        responseType: "json"
+      })
+      .then(res => {
+        this.setState({ requests: res.data });
+      });
+    // console.log(this.props.getUsers());
+    // this.setState({ requests: this.props.getUsers() });
+  }
+
+  onLogoutClick = e => {
+    e.preventDefault();
+    this.props.logoutUser();
+  };
+
   render() {
-    console.log(this.props);
     const { user } = this.props.auth;
-    //console.log(this.props.getUser(this.props.auth.id));
-    if (user.find === "student") {
-      return <Redirect to="/studenthome" /*component={StudentHome}*/ />;
-    } else if (user.reviewer === "reviewer") {
-      return <Redirect to="/reviewerhome" /*component={ReviewerHome}*/ />;
-    }
     return (
-      <div>
-        App wrapper
-        <Route path="/login" component={Login} />
+      <div style={{ height: "75vh" }} className="container valign-wrapper">
+        <div className="row">
+          <div className="col s12 center-align">
+            <h4>
+              <b>Hey there,</b> {user.name.split(" ")[0]}
+              <p className="flow-text grey-text text-darken-1">
+                You are a student{" "}
+                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
+              </p>
+            </h4>
+            <table className="table table-stripped table-condensed">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Name</th>
+                  <th>Email Address</th>
+                  <th>Account Type</th>
+                </tr>
+              </thead>
+              <tbody>{this.renderTableBody()}</tbody>
+            </table>
+            <button
+              style={{
+                width: "150px",
+                borderRadius: "3px",
+                letterSpacing: "1.5px",
+                marginTop: "1rem"
+              }}
+              onClick={this.onLogoutClick}
+              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
+
+  renderTableBody() {
+    let rows = [];
+    let self = this;
+    this.state.requests.map((row, idx) => {
+      rows.push(
+        <tr>
+          <td>{idx + 1}.</td>
+          <td>{row.name}</td>
+          <td>{row.email}</td>
+          <td>{row.reviewer}</td>
+        </tr>
+      );
+    });
+
+    return rows;
+  }
 }
-//     const { user } = this.props.auth;
-//     return (
-//       <div style={{ height: "75vh" }} className="container valign-wrapper">
-//         <div className="row">
-//           <div className="col s12 center-align">
-//             <h4>
-//               <b>Hey there,</b> {user.name.split(" ")[0]}
-//               <p className="flow-text grey-text text-darken-1">
-//                 You are a student{" "}
-//                 <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
-//               </p>
-//             </h4>
-//             <button
-//               style={{
-//                 width: "150px",
-//                 borderRadius: "3px",
-//                 letterSpacing: "1.5px",
-//                 marginTop: "1rem"
-//               }}
-//               onClick={this.onLogoutClick}
-//               className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-//             >
-//               Logout
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 
 Dashboard.propTypes = {
+  getUsers: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  errors: state.errors
 });
 
 export default connect(
   mapStateToProps,
-  { logoutUser }
+  { logoutUser, getUsers }
 )(Dashboard);
