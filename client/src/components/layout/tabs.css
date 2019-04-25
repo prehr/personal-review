@@ -8,6 +8,7 @@
 }
 .tabs .tab a {
   color: #000000 !important;
+  text-transform: none !important;
 }
 .tabs .indicator {
   background-color: #e3f2fd !important;

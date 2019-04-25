@@ -25,11 +25,13 @@ class Navbar extends Component {
                 <ul className="tabs tabs-transparent white lighten-4">
                   <li className="tab">
                     <Link to="/faq" className="black-text">
-                      <h6>F.A.Q</h6>
+                      F.A.Q
                     </Link>
                   </li>
                   <li className="tab">
-                    <a href="#test2">Test 2</a>
+                    <Link to="/dashboard" className="black-text">
+                      Dashboard
+                    </Link>
                   </li>
                   <li className="tab">
                     <a href="#test3">Disabled Tab</a>
