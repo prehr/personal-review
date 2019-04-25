@@ -1,24 +1,30 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { BrowserRouter as Route } from "react-router-dom";
 import { logoutUser } from "../../actions/authActions";
+import Login from "../../components/auth/Login";
 import axios from "axios";
 
-class ReviewerHome extends Component {
-  constructor(props) {
-    super(props);
+//import StudentHome from "../../components/Student/StudentHome";
+//import ReviewerHome from "../../components/Reviewer/ReviewerHome";
+
+class Dashboard2 extends Component {
+  constructor() {
+    super();
     this.state = {
       requests: [
         {
           _id: "",
           name: "",
           email: "",
+          password: "",
           reviewer: ""
         }
       ]
     };
     this.renderTableBody = this.renderTableBody.bind(this);
-    this.onCompleteChange = this.onCompleteChange.bind(this);
     this.getData = this.getData.bind(this);
   }
 
@@ -28,11 +34,15 @@ class ReviewerHome extends Component {
 
   getData() {
     axios
-      .get("/api/requests", {
+      .get("/api/users/getdata", {
+        // params: {
+        //   _id: this.props.auth.user.id
+        // },
         responseType: "json"
       })
-      .then(result => {
-        this.setState({ requests: result.data });
+      .then(res => {
+        console.log(res.data);
+        this.setState({ requests: res.data });
       });
   }
 
@@ -99,22 +109,19 @@ class ReviewerHome extends Component {
 
     return rows;
   }
-
-  onCompleteChange(e) {
-    const payload = { complete: e.target.checked };
-    axios
-      .put("/api/requests/" + e.target.id, payload, { responseType: "json" })
-      .then(this.getData());
-  }
 }
-ReviewerHome.propTypes = {
+
+Dashboard2.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
+
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  errors: state.errors
 });
+
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(ReviewerHome);
+)(Dashboard2);

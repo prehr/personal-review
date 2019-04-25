@@ -50,6 +50,7 @@ router.get("/getdata", (req, res) => {
     .then(docs => res.status(200).send(docs))
     .catch(err => res.status(500).send(err));
 });
+
 //dont work
 // router.get("/:id", (req, res) => {
 //   console.log(req);
