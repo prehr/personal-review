@@ -10,7 +10,7 @@ type: String,
 },
 reviewer_id: {
 type: String,
-default: ""
+default: null
 },
   title: {
     type: String,

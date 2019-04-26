@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { /*Link,*/ withRouter } from "react-router-dom";
 //import { Redirect } from "react-router-dom";
+import axios from "axios";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import axios from "axios";
 
 class MyReviews extends Component{
 
@@ -15,7 +15,7 @@ class MyReviews extends Component{
                 _id: '',
                 user_email: '',
                 user_id: '',
-                reviewer_id: '',
+                reviewer_id: null,
                 title: '',
                 field: '',
                 notes: '',
@@ -26,17 +26,27 @@ class MyReviews extends Component{
         };
         this.renderTableBody = this.renderTableBody.bind(this);
         this.onCompleteChange = this.onCompleteChange.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.componentWillUnmount = this.componentWillUnmount.bind(this);
         this.getData = this.getData.bind(this);
     }
 
     componentDidMount() {
+        this.setState({ isMounted: true });
         this.getData();
-
-    }
+      }
+    
+      componentWillUnmount() {
+        this.state.isMounted = false;
+      }
 
     getData(){
+        console.log(this.props.auth.user.id);
         axios.get('/api/reviews/requests', {
             responseType: 'json',
+            params: {
+                user_id: this.props.auth.user.id
+          },
         }).then(result => {
             this.setState({ requests: result.data });
         });
@@ -98,13 +108,14 @@ class MyReviews extends Component{
 
     onCompleteChange(e){
         var txt = "";
-        if (window.confirm("Are you sure this action can NOT be undone!")) {
+        if (window.confirm("Are you sure? This action can NOT be undone!")) {
             txt = "Yes";
           } else {
             txt = "No";
           }
           if(txt === "Yes"){
           const payload = { complete: e.target.checked };
+          console.log(e.target.id);
           axios.put('/api/reviews/requests/' + e.target.id, payload, {responseType: 'json'})
           .then(this.getData());
           }
@@ -112,4 +123,14 @@ class MyReviews extends Component{
 
 }
 
-export default MyReviews;
+MyReviews.propTypes = {
+    logoutUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+  };
+  const mapStateToProps = state => ({
+    auth: state.auth
+  });
+  export default connect(
+    mapStateToProps,
+    { logoutUser }
+  )(withRouter(MyReviews));

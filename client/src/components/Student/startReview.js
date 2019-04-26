@@ -44,9 +44,9 @@ import axios from "axios";
 // });
 
 const options = [
-    { value: "english", label: "English" },
-    { value: "math", label: "Math" },
-    { value: "computerscience", label: "Computer Science" }
+    { value: "English", label: "English" },
+    { value: "Math", label: "Math" },
+    { value: "Computer Science", label: "Computer Science" }
   ];
 
 class StartReview extends Component{
@@ -55,7 +55,7 @@ class StartReview extends Component{
         this.state = {
           user_email: "",
           user_id: "",
-          reviewer_id: "",
+          reviewer_id: null,
           title: "",
           field: "",
           notes: "",
