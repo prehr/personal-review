@@ -1,4 +1,4 @@
-.tabs .tab a:hover {
+/* .tabs .tab a:hover {
   background-color: #e3f2fd !important;
   color: #000000 !important;
 }
@@ -8,6 +8,22 @@
 }
 .tabs .tab a {
   color: #000000 !important;
+  text-transform: none !important;
+}
+.tabs .indicator {
+  background-color: #e3f2fd !important;
+} */
+
+.tabs .tab a:hover {
+  background-color: #e3f2fd !important;
+  color: black !important;
+}
+.tabs .tab a:focus {
+  background-color: #6eff6e80 !important;
+  color: black !important;
+}
+.tabs .tab a {
+  color: black !important;
   text-transform: none !important;
 }
 .tabs .indicator {

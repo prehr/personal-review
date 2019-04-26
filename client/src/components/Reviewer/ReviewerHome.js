@@ -68,8 +68,8 @@ class ReviewerHome extends Component {
   availableReviews = e => {
     e.preventDefault();
     this.props.history.push("/availablereviews");
-
   };
+
   render() {
     const { user } = this.props.auth;
     if (this.state.isMounted && this.state.requests.reviewer !== "reviewer") {
@@ -83,20 +83,19 @@ class ReviewerHome extends Component {
               <h4>
                 <b>Hey there,</b> {user.name.split(" ")[0]}
                 <p className="flow-text grey-text text-darken-1">
-                  You are a reviewer{" "}
-                  <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
+                  Problems? Feel free to contact us.{" "}
                 </p>
               </h4>
-              <table className="table table-stripped table-condensed">
+              {/* <table className="table table-stripped table-condensed">
                 <thead>
                   <tr>
                     <th>{this.state.requests.reviewer}</th>
                   </tr>
                 </thead>
-              </table>
+              </table> */}
               <button
                 style={{
-                  width: "150px",
+                  width: "250px",
                   borderRadius: "3px",
                   letterSpacing: "1.5px",
                   marginTop: "1rem"
@@ -143,6 +142,7 @@ class ReviewerHome extends Component {
     return <h1 className="center">Loading</h1>;
   }
 }
+
 ReviewerHome.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired

@@ -13,16 +13,17 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import FAQ from "./components/pages/FAQ";
+import ContactUs from "./components/pages/ContactUs";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import StudentHome from "./components/Student/StudentHome";
 import ReviewerHome from "./components/Reviewer/ReviewerHome";
 
 //import student components
-import StartReview from "./components/Student/startreview";
-import MyReviews from "./components/Student/myreviews";
-import AvailableReviews from "./components/Reviewer/availablereviews";
-import ActiveReviews from "./components/Reviewer/activereviews";
+import StartReview from "./components/Student/StartReview";
+import MyReviews from "./components/Student/MyReviews";
+import AvailableReviews from "./components/Reviewer/AvailableReviews";
+import ActiveReviews from "./components/Reviewer/ActiveReviews";
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -53,11 +54,12 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/faq" component={FAQ} />
+            <Route exact path="/contactus" component={ContactUs} />
             {/*David adding new */}
-            <Route exact path="/startreview" component ={StartReview}/>
+            {/* <Route exact path="/startreview" component ={StartReview}/>
             <Route exact path ="/myreviews" component={MyReviews}/>
             <Route exact path ="/activereviews" component={ActiveReviews}/>
-            <Route exact path ="/availablereviews" component={AvailableReviews}/>
+            <Route exact path ="/availablereviews" component={AvailableReviews}/> */}
             {/* */}
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
@@ -67,6 +69,10 @@ class App extends Component {
                 path="/reviewerhome"
                 component={ReviewerHome}
               />
+              <PrivateRoute exact path="/startreview" component ={StartReview}/>
+            <PrivateRoute exact path ="/myreviews" component={MyReviews}/>
+            <PrivateRoute exact path ="/activereviews" component={ActiveReviews}/>
+            <PrivateRoute exact path ="/availablereviews" component={AvailableReviews}/>
             </Switch>
           </div>
         </Router>
