@@ -59,6 +59,17 @@ class ReviewerHome extends Component {
     this.props.logoutUser();
   };
 
+  activeReviews = e => {
+    e.preventDefault();
+    this.props.history.push("/activereviews");
+
+  };
+
+  availableReviews = e => {
+    e.preventDefault();
+    this.props.history.push("/availablereviews");
+
+  };
   render() {
     const { user } = this.props.auth;
     if (this.state.isMounted && this.state.requests.reviewer !== "reviewer") {
@@ -95,6 +106,35 @@ class ReviewerHome extends Component {
               >
                 Logout
               </button>
+
+              {/*David Adding new */}
+              <br></br>
+              <button
+                    style={{
+                      width: "250px",
+                      borderRadius: "3px",
+                      letterSpacing: "1.5px",
+                      marginTop: "1rem"
+                    }}
+                    onClick={this.availableReviews}
+                    className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  >
+                    Available Reviews
+                </button> 
+                <br></br>
+                <button
+                    style={{
+                      width: "250px",
+                      borderRadius: "3px",
+                      letterSpacing: "1.5px",
+                      marginTop: "1rem"
+                    }}
+                    onClick={this.activeReviews}
+                    className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  >
+                    Active Reviews
+                  </button> 
+              {/* */}
             </div>
           </div>
         </div>

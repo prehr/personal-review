@@ -112,7 +112,7 @@ class StudentHome extends Component {
               <br></br>
               <button
                 style={{
-                  width: "200px",
+                  width: "250px",
                   borderRadius: "3px",
                   letterSpacing: "1.5px",
                   marginTop: "1rem"
@@ -126,7 +126,7 @@ class StudentHome extends Component {
                       
               <button
                     style={{
-                      width: "200px",
+                      width: "250px",
                       borderRadius: "3px",
                       letterSpacing: "1.5px",
                       marginTop: "1rem"

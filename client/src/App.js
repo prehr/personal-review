@@ -21,7 +21,8 @@ import ReviewerHome from "./components/Reviewer/ReviewerHome";
 //import student components
 import StartReview from "./components/Student/startreview";
 import MyReviews from "./components/Student/myreviews";
-
+import AvailableReviews from "./components/Reviewer/availablereviews";
+import ActiveReviews from "./components/Reviewer/activereviews";
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -55,6 +56,8 @@ class App extends Component {
             {/*David adding new */}
             <Route exact path="/startreview" component ={StartReview}/>
             <Route exact path ="/myreviews" component={MyReviews}/>
+            <Route exact path ="/activereviews" component={ActiveReviews}/>
+            <Route exact path ="/availablereviews" component={AvailableReviews}/>
             {/* */}
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
