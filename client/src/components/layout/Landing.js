@@ -1,7 +1,37 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { /*Link,*/ withRouter } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
 
 class Landing extends Component {
+  constructor() {
+    super();
+    this.state = {
+        isMounted: false
+    };
+
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.componentWillUpdate = this.componentWillUpdate.bind(this);
+    this.componentWillUnmount = this.componentWillUnmount.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ isMounted: true });
+  }
+
+  componentWillUnmount() {
+    this.state.isMounted = false;
+  }
+
+  componentWillUpdate() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   render() {
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
@@ -44,4 +74,14 @@ class Landing extends Component {
     );
   }
 }
-export default Landing;
+Landing.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(withRouter(Landing));

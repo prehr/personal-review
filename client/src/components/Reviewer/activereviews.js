@@ -40,7 +40,6 @@ class ActiveReviews extends Component{
       }
 
     getData(){
-        console.log(this.props.auth.user.id);
         axios.get('/api/reviews/requests', {
             responseType: 'json',
             params: {
