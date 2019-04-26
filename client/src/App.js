@@ -19,7 +19,8 @@ import StudentHome from "./components/Student/StudentHome";
 import ReviewerHome from "./components/Reviewer/ReviewerHome";
 
 //import student components
-import StartReview from "./components/Student/startReview";
+import StartReview from "./components/Student/startreview";
+import MyReviews from "./components/Student/myreviews";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -53,6 +54,7 @@ class App extends Component {
             <Route exact path="/faq" component={FAQ} />
             {/*David adding new */}
             <Route exact path="/startreview" component ={StartReview}/>
+            <Route exact path ="/myreviews" component={MyReviews}/>
             {/* */}
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />

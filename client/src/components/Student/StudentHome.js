@@ -117,7 +117,7 @@ class StudentHome extends Component {
                   letterSpacing: "1.5px",
                   marginTop: "1rem"
                 }}
-                onClick={this.startReview}
+                onClick={this.myReviews}
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3"
               >
                 My Reviews
