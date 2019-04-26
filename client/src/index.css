@@ -31,7 +31,7 @@ to me
 2 Attachments */
 
 /* @import url("https://fonts.googleapis.com/css?family=Lobster|Oswald"); */
-@import url("https://fonts.googleapis.com/css?family=Schoolbell");
+@import url("https://fonts.googleapis.com/css?family=Nixie+One");
 body {
   margin: 0;
   padding: 0;
@@ -49,7 +49,7 @@ code {
 
 nav .brand-logo {
   font-size: 50px;
-  font-family: 'Schoolbell', cursive;
+  font-family: 'Nixie One', cursive;
   color: black !important;
   animation: fadein 2s;
 }

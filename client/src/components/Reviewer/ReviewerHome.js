@@ -93,7 +93,8 @@ class ReviewerHome extends Component {
                   </tr>
                 </thead>
               </table> */}
-              <button
+              
+              {/* <button
                 style={{
                   width: "250px",
                   borderRadius: "3px",
@@ -104,7 +105,7 @@ class ReviewerHome extends Component {
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3"
               >
                 Logout
-              </button>
+              </button> */}
 
               {/*David Adding new */}
               <br></br>

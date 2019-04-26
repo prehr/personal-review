@@ -13,6 +13,7 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import FAQ from "./components/pages/FAQ";
+import ThankYou from "./components/pages/ThankYou";
 import ContactUs from "./components/pages/ContactUs";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
@@ -55,6 +56,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/faq" component={FAQ} />
             <Route exact path="/contactus" component={ContactUs} />
+            <Route exact path="/thankyou" component={ThankYou} />
             {/*David adding new */}
             {/* <Route exact path="/startreview" component ={StartReview}/>
             <Route exact path ="/myreviews" component={MyReviews}/>

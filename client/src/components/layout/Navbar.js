@@ -5,7 +5,6 @@ import { /*Link,*/ withRouter } from "react-router-dom";
 //import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import axios from "axios";
 import "./tabs.css";
 
 class Navbar extends Component {

@@ -39,7 +39,7 @@ class StudentHome extends Component {
     }
   }
 
-  getData() {
+  getData() { 
     axios
       .get("/api/users/getdata", {
         params: {
@@ -94,7 +94,7 @@ class StudentHome extends Component {
                   </tr>
                 </thead>
               </table> */}
-              <button
+              {/* <button
                 style={{
                   width: "250px",
                   borderRadius: "3px",
@@ -105,7 +105,7 @@ class StudentHome extends Component {
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3"
               >
                 Logout
-              </button>
+              </button> */}
               
               {/*David trying to add start-review panel */}
               <br></br>
@@ -130,7 +130,7 @@ class StudentHome extends Component {
                       letterSpacing: "1.5px",
                       marginTop: "1rem"
                     }}
-                    onClick={this.myReviews}
+                    onClick={this.startReview}
                     className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                   >
                     Start Review
