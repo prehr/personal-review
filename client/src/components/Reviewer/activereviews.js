@@ -5,7 +5,7 @@ class ActiveReviews extends Component{
     render(){
         return(
             <div id="">
-                <h2>Active Reviews</h2>
+                <h2>Active Reviews test</h2>
                 <form>
 
                 </form>
