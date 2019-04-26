@@ -59,6 +59,18 @@ class StudentHome extends Component {
     this.props.logoutUser();
   };
 
+  startReview = e => {
+    e.preventDefault();
+    this.props.history.push("/startreview");
+
+  };
+  
+  myReviews = e => {
+    e.preventDefault();
+    this.props.history.push("/myreviews");
+
+  };
+
   render() {
     const { user } = this.props.auth;
     if (this.state.isMounted && this.state.requests.reviewer !== "student") {
@@ -95,9 +107,46 @@ class StudentHome extends Component {
               >
                 Logout
               </button>
+              
+              {/*David trying to add start-review panel */}
+              <br></br>
+              <button
+                style={{
+                  width: "200px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  marginTop: "1rem"
+                }}
+                onClick={this.startReview}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              >
+                My Reviews
+              </button> 
+              <br></br>
+                      
+              <button
+                    style={{
+                      width: "200px",
+                      borderRadius: "3px",
+                      letterSpacing: "1.5px",
+                      marginTop: "1rem"
+                    }}
+                    onClick={this.myReviews}
+                    className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  >
+                    Start Review
+                  </button> 
+
+          
+          {/*End of new... */}
+
             </div>
           </div>
+
+
         </div>
+        
+        
       );
     }
     return <h1 className="center">Loading</h1>;

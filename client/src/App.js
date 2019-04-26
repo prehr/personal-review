@@ -17,6 +17,10 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import StudentHome from "./components/Student/StudentHome";
 import ReviewerHome from "./components/Reviewer/ReviewerHome";
+
+//import student components
+import StartReview from "./components/Student/startReview";
+
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -47,6 +51,9 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/faq" component={FAQ} />
+            {/*David adding new */}
+            <Route exact path="/startreview" component ={StartReview}/>
+            {/* */}
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/studenthome" component={StudentHome} />
