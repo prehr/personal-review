@@ -52,7 +52,7 @@ class ActiveReviews extends Component{
 
     render() {
         return (
-            <table className="table table-stripped table-condensed">
+            <table class = "striped bordered">
                 <thead>
                     <tr>
                         <th>No.</th>

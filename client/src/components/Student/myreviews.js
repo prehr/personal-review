@@ -2,28 +2,40 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { /*Link,*/ withRouter } from "react-router-dom";
 //import { Redirect } from "react-router-dom";
+import Select from "react-select";
 import axios from "axios";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+
+const options = [
+    { value: "English", label: "English" },
+    { value: "Math", label: "Math" },
+    { value: "Computer Science", label: "Computer Science" }
+];
+
+const initialState = {
+    requests: [{
+        _id: '',
+        user_email: '',
+        user_id: '',
+        reviewer_id: '',
+        title: '',
+        field: '',
+        notes: '',
+        date: new Date(),
+        complete: false,
+        isMounted: false,
+    }], 
+};
+
+var display = '';
 
 class MyReviews extends Component{
 
     constructor(props) {
         super(props);
-        this.state = {
-            requests: [{
-                _id: '',
-                user_email: '',
-                user_id: '',
-                reviewer_id: null,
-                title: '',
-                field: '',
-                notes: '',
-                date: new Date(),
-                complete: false,
-                isMounted: false
-            }], 
-        };
+        this.state = initialState;
+        
         this.renderTableBody = this.renderTableBody.bind(this);
         this.onCompleteChange = this.onCompleteChange.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
@@ -40,8 +52,14 @@ class MyReviews extends Component{
         this.state.isMounted = false;
       }
 
+      handleChange = newField => {
+        this.setState(initialState);
+        display = newField.value;
+        this.sortrequests();
+        this.renderTableBody();
+    };
+
     getData(){
-        console.log(this.props.auth.user.id);
         axios.get('/api/reviews/requests', {
             responseType: 'json',
             params: {
@@ -52,8 +70,35 @@ class MyReviews extends Component{
         });
     }
 
+    sortrequests(){
+        axios.get('/api/reviews/sort', {
+            responseType: 'json',
+            params: {
+                user_id: this.props.auth.user.id,
+                field: display
+          },
+        }).then(result => {
+            this.setState({ requests: result.data });
+        });
+    }
+
     render() {
         return (
+            <div>
+            <div className="col s12" 
+            style={{ 
+                paddingLeft: "11.250px", 
+                paddingRight: "11.250px",  
+                paddingTop: "11.250px",
+                zIndex: 1
+                }}>
+                    <Select
+                      onChange={this.handleChange}
+                      value={this.state.field}
+                      id="field"
+                      options={options}
+                    />
+            </div>
             <table className="table table-stripped table-condensed">
                 <thead>
                     <tr>
@@ -70,6 +115,7 @@ class MyReviews extends Component{
                     {this.renderTableBody()}
                 </tbody>
             </table>
+            </div>
         );
     }
 
@@ -92,7 +138,8 @@ class MyReviews extends Component{
                       width: "1px",
                       borderRadius: "3px",
                       letterSpacing: "1.5px",
-                      marginTop: ".03rem"
+                      marginTop: ".03rem",
+                      zIndex: 0
                     }} type="button" id={ row._id } 
                         onClick={ self.onCompleteChange }
                         disabled={row.complete} 

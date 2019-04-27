@@ -27,6 +27,24 @@ router.get('/available', (req, res) => {
       .catch(err => res.status(500).send(err));
 });
 
+router.get('/byfield', (req, res) => {
+  let query = req.query.field;
+  console.log(query);
+  // find requests and convert to array (with optional query)
+  Reviews.find({reviewer_id: null, field: query})
+      .then(docs => res.status(200).send(docs))
+      .catch(err => res.status(500).send(err));
+});
+
+router.get('/sort', (req, res) => {
+  let sortField = req.query.field;
+  let usrId = req.query.user_id;
+  // find requests and convert to array (with optional query)
+  Reviews.find({user_id: usrId, field: sortField})
+      .then(docs => res.status(200).send(docs))
+      .catch(err => res.status(500).send(err));
+});
+
 router.put('/requests/:id', (req, res) => {
   const o_id = new mongo.ObjectId(req.params.id);
   // extract data from body and add timestamps

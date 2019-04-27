@@ -7,47 +7,11 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import axios from "axios";
 
-
-// user_email: {
-//     type: String,
-//     required: true
-//     },
-// user_id: {
-// type: String,
-// required: true
-// },
-// reviewer_id: {
-// type: String,
-// required: true
-// },
-//   title: {
-//     type: String,
-//     required: true
-//   },
-//   field: {
-//     type: String,
-//     required: true
-//   },
-//   notes: {
-//     type: String,
-//     required: true
-//   },
-//   date: {
-//     type: Date,
-//     default: Date.now
-//   },
-//   complete: {
-//     type: Boolean,
-//     default: false,
-//     required: true
-//   }
-// });
-
 const options = [
     { value: "English", label: "English" },
     { value: "Math", label: "Math" },
     { value: "Computer Science", label: "Computer Science" }
-  ];
+];
 
 class StartReview extends Component{
     constructor() {
@@ -168,10 +132,11 @@ class StartReview extends Component{
                   <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                     <button
                       style={{
-                        width: "390px",
+                        width: "150px",
                         borderRadius: "3px",
                         letterSpacing: "1.5px",
-                        marginTop: "7rem"
+                        marginTop: "2rem",
+                        zIndex: -1
                       }}
                       type="submit"
                       className="btn btn-large waves-effect waves-light hoverable blue accent-3"
@@ -185,7 +150,7 @@ class StartReview extends Component{
           </div>
         );
                     }
-                    return <h1 className="center">Loading</h1>;
+        return <h1 className="center">Loading</h1>;
       }
     }
 

@@ -4,26 +4,37 @@ import { /*Link,*/ withRouter } from "react-router-dom";
 //import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import Select from "react-select";
 import axios from "axios";
+
+const options = [
+    { value: "English", label: "English" },
+    { value: "Math", label: "Math" },
+    { value: "Computer Science", label: "Computer Science" }
+];
+
+const initialState = {
+    requests: [{
+        _id: '',
+        user_email: '',
+        user_id: '',
+        reviewer_id: '',
+        title: '',
+        field: '',
+        notes: '',
+        date: new Date(),
+        complete: false,
+        isMounted: false,
+    }], 
+};
+
+var display = '';
 
 class AvailableReviews extends Component{
 
     constructor(props) {
         super(props);
-        this.state = {
-            requests: [{
-                _id: '',
-                user_email: '',
-                user_id: '',
-                reviewer_id: '',
-                title: '',
-                field: '',
-                notes: '',
-                date: new Date(),
-                complete: false,
-                isMounted: false
-            }], 
-        };
+        this.state = initialState;
         this.renderTableBody = this.renderTableBody.bind(this);
         this.onCompleteChange = this.onCompleteChange.bind(this);
         this.getData = this.getData.bind(this);
@@ -31,8 +42,14 @@ class AvailableReviews extends Component{
 
     componentDidMount() {
         this.getData();
-
     }
+
+    handleChange = newField => {
+        this.setState(initialState);
+        display = newField.value;
+        this.getDataByField();
+        this.renderTableBody();
+    };
 
     getData(){
         axios.get('/api/reviews/available', {
@@ -42,9 +59,35 @@ class AvailableReviews extends Component{
         });
     }
 
+    getDataByField(){
+        axios.get('/api/reviews/byfield', {
+            responseType: 'json',
+            params: {
+                field: display
+          },
+        }).then(result => {
+            this.setState({ requests: result.data });
+        });
+    }
+
     render() {
         return (
-            <table className="table table-stripped table-condensed">
+            <div>
+            <div className="col s12" 
+            style={{ 
+                paddingLeft: "11.250px", 
+                paddingRight: "11.250px",  
+                paddingTop: "11.250px",
+                zIndex: 1
+                }}>
+                    <Select
+                      onChange={this.handleChange}
+                      value={this.state.field}
+                      id="field"
+                      options={options}
+                    />
+          </div>
+            <table className="table table-striped center">
                 <thead>
                     <tr>
                         <th>No.</th>
@@ -60,6 +103,7 @@ class AvailableReviews extends Component{
                     {this.renderTableBody()}
                 </tbody>
             </table>
+            </div>
         );
     }
 
@@ -82,7 +126,8 @@ class AvailableReviews extends Component{
                       width: "1px",
                       borderRadius: "3px",
                       letterSpacing: "1.5px",
-                      marginTop: ".03rem"
+                      marginTop: ".03rem",
+                      zIndex: 0
                     }} type="button" id={ row._id } 
                         onClick={ self.onCompleteChange }
                         className="btn btn-small waves-effect waves-light hoverable blue accent-3"
