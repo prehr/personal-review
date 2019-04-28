@@ -121,7 +121,7 @@ class StartReview extends Component{
                   >
                     Field
                   </label>
-                  <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+                  <div className="col s12" style={{ paddingLeft: "11.250px", zIndex: 1 }}>
                     <Select
                       onChange={this.handleChange}
                       value={this.state.field}
@@ -136,7 +136,7 @@ class StartReview extends Component{
                         borderRadius: "3px",
                         letterSpacing: "1.5px",
                         marginTop: "2rem",
-                        zIndex: -1
+                        zIndex: 0
                       }}
                       type="submit"
                       className="btn btn-large waves-effect waves-light hoverable blue accent-3"

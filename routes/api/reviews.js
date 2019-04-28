@@ -45,6 +45,15 @@ router.get('/sort', (req, res) => {
       .catch(err => res.status(500).send(err));
 });
 
+router.get('/sortreviewers', (req, res) => {
+  let sortField = req.query.field;
+  let usrId = req.query.reviewer_id;
+  // find requests and convert to array (with optional query)
+  Reviews.find({reviewer_id: usrId, field: sortField})
+      .then(docs => res.status(200).send(docs))
+      .catch(err => res.status(500).send(err));
+});
+
 router.put('/requests/:id', (req, res) => {
   const o_id = new mongo.ObjectId(req.params.id);
   // extract data from body and add timestamps
