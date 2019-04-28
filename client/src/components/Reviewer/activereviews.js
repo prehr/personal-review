@@ -82,7 +82,6 @@ class ActiveReviews extends Component{
 
 
     render() {
-        if(this.state.isMounted){
         return (
             <div>
                 <div className="col s12" 
@@ -116,8 +115,6 @@ class ActiveReviews extends Component{
                 </table>
             </div>
         );
-        }
-        return <h1 className="center">Loading</h1>;
     }
 
     renderTableBody() {
