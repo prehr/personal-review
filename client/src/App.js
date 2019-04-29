@@ -26,10 +26,10 @@ import ReviewerHome from "./components/Reviewer/ReviewerHome";
 // import AvailableReviews from "./components/Reviewer/availablereviews";
 // import ActiveReviews from "./components/Reviewer/activereviews";
 
-import StartReview from "./components/Student/StartReview";
-import MyReviews from "./components/Student/MyReviews";
-import AvailableReviews from "./components/Reviewer/AvailableReviews";
-import ActiveReviews from "./components/Reviewer/ActiveReviews";
+import StartReview from "./components/Student/startreview";
+import MyReviews from "./components/Student/myreviews";
+import AvailableReviews from "./components/Reviewer/availablereviews";
+import ActiveReviews from "./components/Reviewer/activereviews";
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
