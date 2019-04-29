@@ -6,6 +6,7 @@ import Select from "react-select";
 import axios from "axios";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+//noreply.reviewme@gmail.com
 
 const options = [
     { value: "English", label: "English" },
@@ -83,6 +84,7 @@ class MyReviews extends Component{
     }
 
     render() {
+        if(this.state.isMounted){
         return (
             <div>
             <div className="col s12" 
@@ -99,7 +101,7 @@ class MyReviews extends Component{
                       options={options}
                     />
             </div>
-            <table className="table table-stripped table-condensed">
+            <table className="striped bordered">
                 <thead>
                     <tr>
                         <th>No.</th>
@@ -117,6 +119,9 @@ class MyReviews extends Component{
             </table>
             </div>
         );
+            }
+            
+        return <h1 className="center">Loading</h1>;
     }
 
     renderTableBody() {
@@ -155,7 +160,7 @@ class MyReviews extends Component{
 
     onCompleteChange(e){
         var txt = "";
-        if (window.confirm("Are you sure? This action can NOT be undone!")) {
+        if (window.confirm("You are about to mark this review as complete are you sure? This action can NOT be undone!")) {
             txt = "Yes";
           } else {
             txt = "No";

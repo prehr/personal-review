@@ -23,6 +23,19 @@
   <body>
     <noscript> You need to enable JavaScript to run this app. </noscript>
     <div id="root"></div>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyANhRcZEBXCvmuYOxPigLeU2UvAC01KdKg",
+        authDomain: "review-me-1ab33.firebaseapp.com",
+        databaseURL: "https://review-me-1ab33.firebaseio.com",
+        projectId: "review-me-1ab33",
+        storageBucket: "review-me-1ab33.appspot.com",
+        messagingSenderId: "600450839785"
+      };
+      firebase.initializeApp(config);
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>

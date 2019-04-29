@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Select from "react-select";
 import axios from "axios";
+//noreply.reviewme@gmail.com
 
 const options = [
     { value: "English", label: "English" },
@@ -37,12 +38,18 @@ class AvailableReviews extends Component{
         this.state = initialState;
         this.renderTableBody = this.renderTableBody.bind(this);
         this.onCompleteChange = this.onCompleteChange.bind(this);
+        this.componentWillUnmount = this.componentWillUnmount.bind(this);
         this.getData = this.getData.bind(this);
     }
 
     componentDidMount() {
+        this.setState({ isMounted: true });
         this.getData();
-    }
+      }
+    
+      componentWillUnmount() {
+        this.state.isMounted = false;
+      }
 
     handleChange = newField => {
         this.setState(initialState);
@@ -71,6 +78,7 @@ class AvailableReviews extends Component{
     }
 
     render() {
+        if(this.state.isMounted){
         return (
             <div>
             <div className="col s12" 
@@ -87,7 +95,7 @@ class AvailableReviews extends Component{
                       options={options}
                     />
           </div>
-            <table className="table table-striped center">
+            <table className="striped bordered">
                 <thead>
                     <tr>
                         <th>No.</th>
@@ -105,6 +113,8 @@ class AvailableReviews extends Component{
             </table>
             </div>
         );
+        }
+        return <h1 className="center">Loading</h1>;
     }
 
     renderTableBody() {
@@ -141,6 +151,7 @@ class AvailableReviews extends Component{
     }
 
     onCompleteChange(e){
+        console.log(e);
         var txt = "";
         if (window.confirm("Are you sure? This action can NOT be undone!")) {
             txt = "Yes";
