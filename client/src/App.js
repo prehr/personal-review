@@ -14,7 +14,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import FAQ from "./components/pages/FAQ";
 import ThankYou from "./components/pages/ThankYou";
-import ContactUs from "./components/pages/ContactUs";
+import ContactUs from "./components/pages/contact/ContactUs";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import StudentHome from "./components/Student/StudentHome";
@@ -60,7 +60,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/faq" component={FAQ} />
-            <Route exact path="/contactus" component={ContactUs} />
+            <Route exact path="/contact" component={ContactUs} />
             <Route exact path="/thankyou" component={ThankYou} />
             {/*David adding new */}
             {/* <Route exact path="/startreview" component ={StartReview}/>
