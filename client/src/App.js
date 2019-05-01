@@ -14,7 +14,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import FAQ from "./components/pages/FAQ";
 import ThankYou from "./components/pages/ThankYou";
-import ContactUs from "./components/pages/contact/ContactUs";
+import ContactUs from "./components/pages/ContactUs";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import StudentHome from "./components/Student/StudentHome";

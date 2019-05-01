@@ -5,7 +5,7 @@ function emailCheck(email) {
   return { email: !valid.test(email) };
 }
 
-class FAQ extends Component {
+class ContactUs extends Component {
   constructor() {
     super();
     this.state = { email: "", touched: { email: false } };
@@ -130,4 +130,4 @@ class FAQ extends Component {
     );
   }
 }
-export default FAQ;
+export default ContactUs;
