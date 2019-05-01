@@ -19,11 +19,11 @@ router.post('/contactus', (req, res) => {
         }
     });
     let mailOptions = {
-        from: '"Review Me Contact" <noreply.reviewme@gmail.com>',
-        to: req.body.email,
-        subject: "We have recieved your request",
-        text: "Thank you for your interest in ReviewMe! A member of our team will reach out soon.", 
-        html: '<b>Thank you for your interest in ReviewMe! A member of our team will reach out soon.</b>'
+        from: '"ReviewMe Contact Form" <'+req.body.email+'>',
+        to: 'personalgrades@gmail.com',
+        subject: "New Message from the Contact Form",
+        //text: 'From: '+req.body.email+' Phone#: '+req.body.phone+' Message: ' +req.body.help//,
+        html: `<ul><li><p>From: </p>${req.body.email}</li><li><p>Phone#: </p> ${req.body.phone}</li><li><p>Message: </p> ${req.body.help}</li></ul>`
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

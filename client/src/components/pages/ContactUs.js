@@ -120,7 +120,7 @@ class ContactUs extends Component {
                   className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 >
                   {" "}
-                  Request Info{" "}
+                  Contact Us{" "}
                 </button>
               </form>
             </div>
