@@ -98,7 +98,7 @@ class ActiveReviews extends Component{
                             options={options}
                         />
             </div>
-                <table class = "striped bordered">
+                <table className = "striped bordered">
                     <thead>
                         <tr>
                             <th>No.</th>
