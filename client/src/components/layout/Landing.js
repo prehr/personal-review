@@ -38,7 +38,7 @@ class Landing extends Component {
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              ReviewMe lets you submit work that you want reviewed by top
+              ReviewMe lets you submit work to be reviewed by top
               industry professionals.{" "}
             </h4>
             <p className="flow-text grey-text text-darken-1">

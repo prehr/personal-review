@@ -8,9 +8,28 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
 const options = [
+    { value: "Algebra", label: "Algebra" },
+    { value: "Art", label: "Art" },
+    { value: "Astronomy", label: "Astronomy" },
+    { value: "Biology", label: "Biology" },
+    { value: "Calculus", label: "Calculus" },
+    { value: "Chemistry", label: "Chemistry" },
+    { value: "Chinese", label: "Chinese" },
+    { value: "Computer Science", label: "Computer Science" },
+    { value: "Discrete Mathematics", label: "Discrete Mathematics" },
+    { value: "Earth Science", label: "Earth Science" },
     { value: "English", label: "English" },
-    { value: "Math", label: "Math" },
-    { value: "Computer Science", label: "Computer Science" }
+    { value: "French", label: "French" },
+    { value: "Geography", label: "Geography" },
+    { value: "Geology", label: "Geology" },
+    { value: "German", label: "German" },
+    { value: "Physics", label: "Physics" },
+    { value: "Psychology", label: "Psychology" },
+    { value: "Resume Advice", label: "Resume Advice" },
+    { value: "Robotics", label: "Robotics" },
+    { value: "Spanish", label: "Spanish" },
+    { value: "US History", label: "US History" },
+    { value: "World History", label: "World History" },
 ];
 
 const initialState = {
@@ -98,7 +117,7 @@ class ActiveReviews extends Component{
                             options={options}
                         />
             </div>
-                <table class = "striped bordered">
+                <table className = "striped bordered">
                     <thead>
                         <tr>
                             <th>No.</th>

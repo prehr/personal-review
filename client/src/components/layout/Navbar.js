@@ -48,7 +48,7 @@ class Navbar extends Component {
                     </Link>
                   </li>
                   <li className="tab">
-                    <Link to="/contactus" className="black-text">
+                    <Link to="/contact" className="black-text">
                       Contact Us
                     </Link>
                   </li>
