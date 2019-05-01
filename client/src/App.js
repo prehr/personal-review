@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-
+//save
 import { Provider } from "react-redux";
 import store from "./store";
 
@@ -12,7 +12,7 @@ import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import FAQ from "./components/pages/FAQ";
+import FAQ from "./components/pages/FAQ/FAQ";
 import ThankYou from "./components/pages/ThankYou";
 import ContactUs from "./components/pages/ContactUs";
 import PrivateRoute from "./components/private-route/PrivateRoute";
@@ -76,7 +76,7 @@ class App extends Component {
                 path="/reviewerhome"
                 component={ReviewerHome}
               />
-              <PrivateRoute exact path="/startreview" component ={StartReview}/>
+              <PrivateRoute exact path="/StartReview" component ={StartReview}/>
             <PrivateRoute exact path ="/myreviews" component={MyReviews}/>
             <PrivateRoute exact path ="/activereviews" component={ActiveReviews}/>
             <PrivateRoute exact path ="/availablereviews" component={AvailableReviews}/>

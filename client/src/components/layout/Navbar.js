@@ -43,8 +43,8 @@ class Navbar extends Component {
                     </Link>
                   </li>
                   <li className="tab">
-                    <Link to="/faq" className="black-text">
-                      F.A.Q
+                    <Link to="/FAQ" className="black-text">
+                      F.A.Q.
                     </Link>
                   </li>
                   <li className="tab">
